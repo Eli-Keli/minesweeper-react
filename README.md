@@ -1,16 +1,53 @@
-# React + Vite
+# Minesweeper React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Minesweeper clone built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Classic 9×9 board with 10 mines.
+- Left-click to reveal cells; right-click to place or remove flags.
+- Status bar showing total mines, flags used, remaining mines, and game status (playing, win, loss).
+- "New Game" button to reset the board.
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Install dependencies
 
-## Expanding the ESLint configuration
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Run the development server
+
+```bash
+npm run dev
+```
+
+Open the URL printed by Vite (typically http://localhost:5173) in your browser.
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview the production build
+
+```bash
+npm run preview
+```
+
+### Lint the codebase
+
+```bash
+npm run lint
+```
+
+## How to play
+
+- **Reveal a cell:** left-click on a covered cell.
+  - If the cell contains a mine, the game ends in a loss and all mines are revealed.
+  - If the cell is empty (0 adjacent mines), neighboring empty cells and their border of numbered cells are revealed automatically.
+- **Place or remove a flag:** right-click on a covered cell to toggle a flag, marking where you think a mine is.
+- **Numbers:** a revealed number shows how many mines are in the eight surrounding cells.
+- **Winning:** reveal all non-mine cells without clicking on a mine.

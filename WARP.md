@@ -42,7 +42,7 @@ There is no dedicated test runner configured yet; if you need tests, set up a fr
 
 ## Project structure and architecture
 
-This repo is a single-page React application built with Vite.
+This repo is a single-page React application built with Vite that implements a classic Minesweeper clone.
 
 ### Tooling
 
@@ -56,21 +56,20 @@ This repo is a single-page React application built with Vite.
   - Imports global styles from `src/index.css`.
   - Renders the root React component into the DOM element with id `root` using `createRoot` from `react-dom/client`.
   - Wraps the app in `React.StrictMode`.
-- `src/App.jsx` is the root React component. It currently contains the default Vite + React counter example using `useState` and references assets under `src/assets/`.
+- `src/App.jsx` is the root React component. It renders the Minesweeper title and mounts the `Game` component.
+- `src/Game.jsx` owns the main game state (board, game status, and counters) and wires user interactions to the pure logic helpers in `src/gameLogic.js`.
+- `src/components/Board.jsx` renders the grid of cells using the board state.
+- `src/components/Cell.jsx` is the visual representation of a single cell (hidden, revealed, mine, flagged).
 
 When adding new routes or global providers (e.g. context, state management, theming), they should typically be wired through `src/main.jsx`, with page-level or feature-level composition happening inside `src/App.jsx` or its children.
 
 ### Styling
 
 - `src/index.css` defines global styles, including base typography, color scheme, and body layout.
-- `src/App.css` contains styles scoped to the root app layout and demo components (logo animations, card layout, etc.).
+- `src/App.css` contains styles scoped to the Minesweeper layout, status bar, board grid, and cell states.
 
 For additional UI work, prefer keeping global styles in `index.css` and component- or feature-specific styles in separate CSS modules or files imported by those components.
 
 ## Notes derived from README
 
-The `README.md` is the default Vite React template README. Relevant points:
-
-- The project currently uses the standard React plugin for Vite (`@vitejs/plugin-react`).
-- The React Compiler is not enabled; if you introduce it, follow the official React documentation for configuration.
-- If this app grows into a production application, consider migrating to the TypeScript template or adding TypeScript with type-aware ESLint rules as documented in the Vite React + TS template.
+The `README.md` describes the Minesweeper game, how to run it via the npm scripts in `package.json`, and how to interact with the board (clicks, flags, and win/loss conditions).
